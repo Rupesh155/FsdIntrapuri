@@ -199,60 +199,142 @@
 
 
 
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
+
+// const App = () => {
+
+//   let arr=[1,2,3,4,5,6,67,7]
+
+//   let sum=arr.reduce((a,b)=>{
+//     return a+b
+//   })
+//   console.log(sum,"heheh");
+
+
+
+// let [data,SetData]=useState([])
+
+//  useEffect(()=>{
+//   fetch('https://dummyjson.com/recipes').then((D)=>{
+//     return D.json()
+
+//   }).then((d)=>{
+//     SetData(d.recipes)
+//     console.log('heyeye');
+
+//   })
+
+
+//  },[])
+
+// function fun1(yewobuttonhai){
+//   // console.log(id,'heheh');
+//  let newD=  data.filter((value,b)=>{
+//     return value.id!=yewobuttonhai
+
+//   })
+//   console.log(newD,"heheh");
+//   SetData(newD)
+
+// }
+
+//   return (
+//     <div>
+
+// {
+//   data.map((a)=>{
+//     return(<>
+//     <p>{a.id}</p>
+  
+//     <p>{a.name}</p>
+//     <p>{a.cuisine}</p>
+//     <button onClick={()=>fun1(a.id)}> delet</button>
+//    <img   height='100' src={a.image}/>
+//     </>)
+// })
+// }
+
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+
+
+
+
+
+
+
+// // function sum(a){
+
+// // }
+// // sum(5)
+
+
+
+// import React, { useReducer } from 'react'
+
+// const App = () => {
+//   let reducer = (state, action) => {
+//     console.log(state, action, 'd');
+//     if (action.type === 'incre') {
+//       return state + 1;
+//     } else if (action.type === 'desc') {
+//       return state - 1;
+//     }
+//     return state;
+//   }
+
+//   let [state, dispatch] = useReducer(reducer, 0);
+
+//   return (
+//     <div>
+//       <button onClick={() => { dispatch({ type: "incre" }) }}>increment</button>
+//       <button onClick={() => { dispatch({ type: "desc" }) }}>decrement</button>
+//       <p>{state}</p>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React, { useReducer } from 'react'
 
 const App = () => {
 
-  let arr=[1,2,3,4,5,6,67,7]
 
-  let sum=arr.reduce((a,b)=>{
-    return a+b
-  })
-  console.log(sum,"heheh");
+   let reducer = (state, action) => {
+    console.log(state, action, 'd');
+    if (action.type === 'incre') {
+      return state + 1;
+    } else if (action.type === 'desc') {
+      return state - 1;
+    }
+    else if(action.type==='reset'){
+      return 0
+    }
+    // else if(action.type==='color'){
+    // return state==='red'
 
-
-
-let [data,SetData]=useState([])
-
- useEffect(()=>{
-  fetch('https://dummyjson.com/recipes').then((D)=>{
-    return D.json()
-
-  }).then((d)=>{
-    SetData(d.recipes)
-    console.log('heyeye');
-
-  })
-
-
- },[])
-
-function fun1(yewobuttonhai){
-  // console.log(id,'heheh');
- let newD=  data.filter((value,b)=>{
-    return value.id!=yewobuttonhai
-
-  })
-  console.log(newD,"heheh");
-  SetData(newD)
-
-}
-
+    // }
+    return state
+  }
+     let [state,dispatch]= useReducer(reducer,0)
+    //  let color='red'
   return (
-    <div>
+    <div style={{backgroundColor:state}}> 
+      <p>{state}</p>
+          <button onClick={() => { dispatch({ type: "incre" }) }}>increment</button>
+          <button onClick={() => { dispatch({ type: "desc" }) }}>decrement</button>
+          <button onClick={() => { dispatch({ type: "reset" }) }}>Reset</button>
+          <button onClick={() => { dispatch({ type: "color" }) }}>change</button>
 
-{
-  data.map((a)=>{
-    return(<>
-    <p>{a.id}</p>
-  
-    <p>{a.name}</p>
-    <p>{a.cuisine}</p>
-    <button onClick={()=>fun1(a.id)}> delet</button>
-   <img   height='100' src={a.image}/>
-    </>)
-})
-}
+
+
 
     </div>
   )
@@ -261,17 +343,30 @@ function fun1(yewobuttonhai){
 export default App
 
 
+// import React, { useState } from 'react'
+
+// const App = () => {
+//   let [data,SetData]=useState(0)
 
 
+//   function fun1(){
+//     SetData(data+1)
+//   }
+//   function fun2(){
+//     SetData(data-1)
+//   }
+//   return (
+//     <div>
+//       <p>{data}</p>
+//       <button onClick={fun1}> plus</button>
+//       <button onClick={fun2}> minus</button>
 
+      
 
-
-
-
-
-// function sum(a){
-
+//     </div>
+//   )
 // }
-// sum(5)
+
+// export default App
 
 
